@@ -1,0 +1,33 @@
+[package]
+name = "rexcel"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+exclude = ["build/**/*.o", "doc/**/*.html"]
+include = ["src/**/*","resource/logo.jpg", "Cargo.toml"]
+
+[dependencies]
+cargo-edit = "0.8.0"
+calamine = "0.18.0"
+fltk = { version = "^1.2" }
+#fltk-theme = "0.4"
+fltk-table = "0.1"
+# csv = "1.1.6"
+serde="1.0"
+serde_json = "1.0"
+indicium="0.3.6"
+chrono="0.4.19"
+[target.x86_64-pc-windows-gnu]
+linker = "x86_64-w64-mingw32-gcc"
+ar = "x86_64-w64-mingw32-gcc-ar"
+
+# 编译大小
+# cargo-features = ["strip"]
+[profile.release]
+# strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
